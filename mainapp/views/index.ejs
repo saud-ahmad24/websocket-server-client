@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <script>
+      const webSocket = new WebSocket('ws://localhost:443/');
+      webSocket.onmessage = (event) =>{
+        console.log('event received from server', event)
+      }
+      function test(){
+        console.log('button clicked')
+        const data = { message: 'testData' };
+        webSocket.send(JSON.stringify(data));
+      }
+    </script>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <input type="button" name="" id="" onclick="test()">
+  </body>
+</html>
